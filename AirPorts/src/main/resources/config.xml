@@ -32,19 +32,19 @@
 		</environment>
 	</environments>
 	<mappers>
-		<mapper resource = "AirportMapper.xml"/>
-		<mapper resource = "BrandMapper.xml"/>
-		<mapper resource = "BoardingMapper.xml"/>
-		<mapper resource = "BoardingPassMapper.xml"/>
-		<mapper resource = "CancellationMapper.xml"/>
-		<mapper resource = "CityMapper.xml"/>
-		<mapper resource = "CountryMapper.xml"/>
-		<mapper resource = "FlightsMapper.xml"/>
-		<mapper resource = "ModelMapper.xml"/>
-		<mapper resource = "PassengerMapper.xml"/>
-		<mapper resource = "PilotMapper.xml"/>
-		<mapper resource = "PlaneMapper.xml"/>
-		<mapper resource = "StewardMapper.xml"/>
+		<mapper resource = "mapper/AirportMapper.xml"/>
+		<mapper resource = "mapper/BrandMapper.xml"/>
+		<mapper resource = "mapper/BoardingMapper.xml"/>
+		<mapper resource = "mapper/BoardingPassMapper.xml"/>
+		<mapper resource = "mapper/CancellationMapper.xml"/>
+		<mapper resource = "mapper/CityMapper.xml"/>
+		<mapper resource = "mapper/CountryMapper.xml"/>
+		<mapper resource = "mapper/FlightsMapper.xml"/>
+		<mapper resource = "mapper/ModelMapper.xml"/>
+		<mapper resource = "mapper/PassengerMapper.xml"/>
+		<mapper resource = "mapper/PilotMapper.xml"/>
+		<mapper resource = "mapper/PlaneMapper.xml"/>
+		<mapper resource = "mapper/StewardMapper.xml"/>
 		
 	</mappers> 
 	
