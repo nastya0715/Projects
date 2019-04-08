@@ -1,0 +1,31 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace = "com.fedorova.airPorts.dao.ICountryDAO"> 
+
+	<insert id = "insert" parameterType = "Country" useGeneratedKeys = "true" keyProperty = "id">
+	INSERT INTO  countries (name) VALUES (#{name})
+	</insert>
+	
+	<resultMap type = "Country" id = "CountryResultMap"> 
+		<id property = "id" column = "country_id"/> 
+	<result property = "name" column = "country_name"/> 
+	</resultMap> 
+	
+		<resultMap type = "Country" id = "ToCountryResultMap"> 
+		<id property = "id" column = "tcountry_id"/> 
+		<result property = "name" column = "tcountry_name"/> 
+		</resultMap> 
+	
+	<select id = "getById" parameterType ="int" resultMap = "CountryResultMap"> 
+		select co.id as country_id,
+		co.name as country_name
+		from countries co WHERE id=#{id} 
+	</select> 
+	
+	<update id = "update" parameterType = "Country">
+	UPDATE countries SET name=#{name} WHERE id=#{id}
+	</update>
+
+	<delete id = "delete" parameterType = "int">
+	DELETE FROM countries WHERE id=#{id}
+	</delete>
+</mapper>

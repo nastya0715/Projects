@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<HospitalProject>
+   <MedicalInstitutes>
+      <Hospitals>
+         <Hospital>
+            <name> Hospital #2 </name>
+            <address> 
+		<country>Belarus</country> 
+		<city>Minsk</city> 
+		<street> Maple </street> 
+		<buildingNum>7</buildingNum> 
+	    </address>
+            <stuff>doctors</stuff>
+            <doctorsQualification>high</doctorsQualification>
+            <chambersNum>80</chambersNum>
+            <chambersPlacesNum>5</chambersPlacesNum>
+            <patientNum>220</patientNum>
+            <specialization>allergy</specialization>
+	    <doctors></doctors>
+            <departments />
+         </Hospital>
+      </Hospitals>
+      <Polyclinics>
+         <Polyclinic>
+            <name>Polyclinic #23</name>
+            <address>
+		<country>Belarus</country> 
+		<city>Minsk</city> 
+		<street>Sea</street> 
+		<buildingNum>34</buildingNum> 
+	    </address>
+            <stuff>doctors</stuff>
+            <stuff>nurses</stuff>
+            <doctors>150</doctors>
+            <nurses>100</nurses>
+            <patients>400</patients>
+            <doctorsQualification>medium</doctorsQualification>
+            <districtAffiliation>Green area</districtAffiliation>
+            <registry> true </registry>
+            <cabinetNum>150</cabinetNum>
+         </Polyclinic>
+      </Polyclinics>
+      <FirstAidPosts>
+         <FirstAidPost>
+            <name>SchoolPost</name>
+            <address> 
+		<country>Belarus</country> 
+		<city>Minsk</city> 
+		<street>Garden</street> 
+		<buildingNum>65</buildingNum>
+	    </address>
+            <stuff>nurses</stuff>
+            <medicine > Citramon </medicine>
+         </FirstAidPost>
+      </FirstAidPosts>
+      <Laboratories>
+         <Laboratory>
+            <name>Lab#4</name>
+            <address> 
+		<country>Belarus</country>
+		<city>Minsk</city> 
+		<street>Lemon</street> 
+		<buildingNum>93</buildingNum> 
+	    </address>
+            <stuff>nurses</stuff>
+            <patients />
+            <analysis> true </analysis>
+            <analysisType>blood</analysisType>
+         </Laboratory>
+      </Laboratories>
+   </MedicalInstitutes>
+   <People>
+      <Patients>
+         <Patient age="18">
+            <firstName>Alec</firstName>
+            <lastName>Light</lastName>
+            <gender>male</gender>
+	    <birthDate>2000-07-26</birthDate>
+            <alive>true</alive>
+            <address> 
+	    	<country>Belarus</country>
+	    	<city>Minsk</city> 
+            	<street>Maple</street> 
+	    	<buildingNum>46</buildingNum> 
+	    </address>
+            <complaints>LegAche</complaints>
+            <analysis> blood </analysis>
+         </Patient>
+      </Patients>
+      <Stuff>
+         <Doctor>
+            <Allergists>
+               <Allergist age="35">
+                  <education>Medical</education>
+                  <firstName>Ann</firstName>
+                  <lastName>Fox</lastName>
+                  <gender>female</gender>
+                  <alive>true</alive>
+                  <docName>alergist</docName>
+                  <specialization>allergy</specialization>
+                  <alergicDeadNum>5</alergicDeadNum>
+               </Allergist>
+            </Allergists>
+            <Cardiologists>
+               <Cardiologist age="45">
+                  <education>Medical</education>
+                  <knowledge>hydraulicsKnowledge</knowledge>
+                  <qualification>high</qualification>
+                  <firstName>Max</firstName>
+                  <lastName>Log</lastName>
+                  <gender>male</gender>
+                  <birthDate />
+                  <alive>true</alive>
+                  <docName>cardiologist</docName>
+                  <specialization>heartAche</specialization>
+               </Cardiologist>
+            </Cardiologists>
+            <Dentists>
+               <Dentist age="30">
+                  <education>Medical</education>
+                  <knowledge />
+                  <qualification>high</qualification>
+                  <firstName>Lisa</firstName>
+                  <lastName>Git</lastName>
+                  <gender>female</gender>
+                  <birthDate />
+                  <alive>true</alive>
+                  <docName>dentist</docName>
+                  <specialization>toothAche</specialization>
+                  <pulledOutTeethNum>1074</pulledOutTeethNum>
+               </Dentist>
+            </Dentists>
+            <Neurologists>
+               <Neurologist age="34">
+                  <education>Medical</education>
+                  <knowledge>electrodynamicsKnowledge</knowledge>
+                  <qualification>high</qualification>
+                  <firstName>Godfrey</firstName>
+                  <lastName>Sparcs</lastName>
+                  <gender>male</gender>
+                  <birthDate />
+                  <alive>true</alive>
+                  <docName>neurologist</docName>
+                  <specialization>depression</specialization>
+               </Neurologist>
+            </Neurologists>
+            <Ophthalmologists>
+               <Ophthalmologist age="28">
+                  <education>Medical</education>
+                  <knowledge>opticsKnowledge</knowledge>
+                  <qualification>high</qualification>
+                  <firstName>Amelia</firstName>
+                  <lastName>Batler</lastName>
+                  <gender>female</gender>
+                  <birthDate />
+                  <alive>true</alive>
+                  <docName>ophthalmologist</docName>
+                  <specialization>badVision</specialization>
+               </Ophthalmologist>
+            </Ophthalmologists>
+            <Otolaryngologists>
+               <Otolaryngologist age="25">
+                  <education>Medical</education>
+                  <knowledge>hydraulicsKnowledge</knowledge>
+                  <qualification>medium</qualification>
+                  <firstName>Georgia</firstName>
+                  <lastName>Ramsey</lastName>
+                  <gender>female</gender>
+                  <birthDate />
+                  <alive>true</alive>
+                  <docName>otololaringologist</docName>
+                  <specialization>earAche, snot, sore throat</specialization>
+               </Otolaryngologist>
+            </Otolaryngologists>
+            <Podiatrists>
+               <Podiatrist age="47">
+                  <education>Medical</education>
+                  <knowledge>mechanicsKnowledge</knowledge>
+                  <qualification>high</qualification>
+                  <firstName>Vincent</firstName>
+                  <lastName>Robbins</lastName>
+                  <gender>male</gender>
+                  <birthDate />
+                  <alive>true</alive>
+                  <docName>podiatrist</docName>
+                  <specialization>LegAche</specialization>
+               </Podiatrist>
+            </Podiatrists>
+            <Surgeons>
+               <Surgeon age="43">
+                  <education>Medical</education>
+                  <knowledge />
+                  <qualification>high</qualification>
+                  <firstName>David</firstName>
+                  <lastName>Wright</lastName>
+                  <gender>male</gender>
+                  <birthDate />
+                  <alive>true</alive>
+                  <docName>surgeon</docName>
+                  <specialization>appendicit</specialization>
+                  <operationNum>157</operationNum>
+                  <deadNum>4</deadNum>
+               </Surgeon>
+            </Surgeons>
+         </Doctor>
+         <Nurses>
+            <Nurse age="32">
+               <firstName>Grace</firstName>
+               <lastName>Ball</lastName>
+               <gender>female</gender>
+               <alive>true</alive>
+               <emotionalStability> + </emotionalStability>
+               <interpersonalSkills> + </interpersonalSkills>
+            </Nurse>
+         </Nurses>
+      </Stuff>
+   </People>
+</HospitalProject>

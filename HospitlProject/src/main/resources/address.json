@@ -1,0 +1,189 @@
+
+     {
+         "Hospital":{
+            "name": "Hospital #2", 
+            "address":{ 
+		"country": "BELARUS", 
+		"city": "MINSK", 
+		"street": "Maple", 
+		"buildingNum": 7
+	    },
+            "doctorsQualification": "high",
+            "chambersNum": 80,
+            "chambersPlacesNum": 5,
+            "patientNum": 220,
+            "specialization": "Surgeon"
+         
+      },
+         "Polyclinic":{
+            "name":"Polyclinic #23",
+            "address":{ 
+		"country": "BELARUS",
+ 		"city": "MINSK", 
+		"street": "Sea", 
+		"buildingNum": 34
+	    },
+            "doctorsQualification": "medium",
+            "districtAffiliation": "Green area",
+            "registry": true,
+            "cabinetNum": 150
+      },
+         "FirstAidPost":{
+            "name": "SchoolPost",
+            "address":{ 
+		"country": "BELARUS", 
+		"city": "MINSK",
+		"street": "Garden", 
+		"buildingNum": 65
+	    },
+            "medicine": "Citramon"
+      },
+         "Laboratory":{
+            "name": "Lab#4",
+            "address":{ 
+		"country": "BELARUS",
+		"city": "MINSK", 
+		"street": "Lemon",
+		"buildingNum":93
+	    },
+            "analysis": true,
+            "analysisType": "blood"
+         },
+      
+   
+   "medicalInstitutes":[
+   "patients":[
+         "Patient",{
+	    "age": 18,
+            "firstName": "Alec",
+            "lastName": "Light",
+            "gender": "male",
+            "birthDate": "2000-05-21",
+            "alive": true,
+            "address":{
+		"country": "BELARUS",
+		"city": "MINSK",
+		"street": "Maple",
+		"buildingNum": 46
+	    },
+            "complaint": "LegAche",
+            "analysis": "+"
+         
+      }],
+	  "doctors":[      
+               "Allergist",{
+                  "education": "Medical",
+                  "knowledge": "inflammations",
+                  "qualification": "medium",
+                  "firstName": "Ann",
+                  "lastName": "Fox",
+                  "age": 34,
+                  "gender": "female",
+                  "alive": true,
+                  "docName": "alergist",
+                  "specialization": "allergy",
+                  "alergicDeadNum": 5
+               
+            },
+            
+               "Cardiologist",{
+                  "education": "Medical",
+                  "knowledge": "hydraulicsKnowledge",
+                  "qualification": "high",
+                  "firstName": "Max",
+                  "lastName": "Log",
+                  "age": 45,
+                  "gender": "male",
+                  "alive": true,
+                  "docName": "cardiologist",
+                  "specialization": "heartAche"
+               
+            },
+            
+               "Dentist",{
+                  "education": "Medical",
+                  "knowledge": "tooth",
+                  "qualification": "high",
+                  "firstName":"Lisa",
+                  "lastName": "Git",
+                  "age": 30,
+                  "gender": "female",
+                  "alive": true,
+                  "docName": "dentist",
+                  "specialization": "toothAche",
+                  "pulledOutTeethNum": 1074
+               
+            },
+            
+               "Neurologist",{
+                  "education": "Medical",
+                  "knowledge": "electrodynamicsKnowledge",
+                  "qualification": "high",
+                  "firstName": "Godfrey",
+                  "lastName": "Sparcs",
+                  "age": 34,
+                  "gender": "male",
+                  "alive": true,
+                  "docName": "neurologist",
+                  "specialization": "depression"
+               
+            },
+            
+               "Ophthalmologist",{
+                  "education": "Medical",
+                  "knowledge": "opticsKnowledge",
+                  "qualification": "high",
+                  "firstName": "Amelia",
+                  "lastName": "Batler",
+                  "age": 28,
+                  "gender": "female",
+                  "alive": true,
+                  "docName": "ophthalmologist",
+                  "specialization": "badVision"
+               
+            },
+           
+               "Otolaryngologist",{
+                  "education": "Medical",
+                  "knowledge": "hydraulicsKnowledge",
+                  "qualification": "medium",
+                  "firstName": "Georgia",
+                  "lastName": "Ramsey",
+                  "age": 25,
+                  "gender": "female",
+                  "alive": true,
+                  "docName": "otololaringologist",
+                  "specialization": "earAche, snot, sore throat"
+               
+            },
+               "Podiatrist",{
+                  "education": "Medical",
+                  "knowledge": "mechanicsKnowledge",
+                  "qualification": "high",
+                  "firstName": "Vincent",
+                  "lastName": "Robbins",
+                  "age": 47,
+                  "gender": "male",
+                  "alive": true,
+                  "docName": "podiatrist",
+                  "specialization": "LegAche"
+                },
+            
+               "Surgeon",{
+                  "education": "Medical",
+                  "knowledge": "anatomy",
+                  "qualification": "high",
+                  "lastName": "Wright",
+                  "age": 43,
+                  "gender": "male",
+                  "alive": true,
+                  "docName": "surgeon",
+                  "specialization": "appendicit",
+                  "operationNum": 157,
+                  "deadNum": 4
+               }
+            
+         ]],
+         
+          
+}

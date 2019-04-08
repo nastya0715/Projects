@@ -1,0 +1,28 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace = "com.fedorova.airPorts.dao.IPassengerDAO"> 
+
+	<insert id = "insert" parameterType = "Passenger" useGeneratedKeys = "true" keyProperty = "id">
+	INSERT INTO  countries (name) VALUES (#{name})
+	</insert>
+	
+	<resultMap type = "Passenger" id = "PassengerResultMap"> 
+		<id property = "id" column = "passenger_id"/> 
+		<result property = "firstName" column = "passenger_first_name"/>
+		<result property = "lastName" column = "passenger_last_name"/>  
+	</resultMap> 
+	
+	<select id = "getById" parameterType ="int" resultMap = "PassengerResultMap"> 
+		select pas.id as passenger_id,
+		pas.first_name as passenger_first_name,
+		pas.last_name as passenger_last_name
+		from passengers pas WHERE pas.id = #{id}  
+	</select> 
+	
+	<update id = "update" parameterType = "Passenger">
+	UPDATE countries SET name=#{name} WHERE id=#{id}
+	</update>
+
+	<delete id = "delete" parameterType = "int">
+	DELETE FROM countries WHERE id=#{id}
+	</delete>
+</mapper>

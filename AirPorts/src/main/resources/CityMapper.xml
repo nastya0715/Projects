@@ -1,0 +1,40 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace = "com.fedorova.airPorts.dao.ICityDAO"> 
+	<insert id = "insert" parameterType = "City" useGeneratedKeys = "true" keyProperty = "id">
+	INSERT INTO  cities (name) VALUES (#{name})
+	</insert>
+	
+	<resultMap type = "City" id = "CityResultMap"> 
+		<id property = "id" column = "city_id"/> 
+		<result property = "name" column = "city_name"/> 
+		<result property = "numberOfPeople" column = "city_numberOfPeople"/> 
+		<result property = "timeZone" column = "city_timeZone"/> 
+		<association property="country" resultMap = "com.fedorova.airPorts.dao.ICountryDAO.CountryResultMap"/> 
+	</resultMap> 
+	
+	<resultMap type = "City" id = "ToCityResultMap"> 
+		<id property = "id" column = "tcity_id"/> 
+		<result property = "name" column = "tcity_name"/> 
+		<result property = "numberOfPeople" column = "tcity_numberOfPeople"/> 
+		<result property = "timeZone" column = "tcity_timeZone"/> 
+		<association property="country" resultMap = "com.fedorova.airPorts.dao.ICountryDAO.CountryResultMap"/> 
+	</resultMap> 
+	
+	<select id = "getById" parameterType ="int" resultMap = "CityResultMap"> 
+	SELECT ci.id as city_id,
+	ci.name as city_name,
+	ci.number_of_people as city_numberOfPeople,
+	ci.time_zone as city_timeZone,
+	co.id as country_id,
+	co.name as country_name
+	FROM cities ci LEFT OUTER JOIN countries co ON ci.countries_id = co.id WHERE ci.id = #{id}
+	</select> 
+	
+	<update id = "update" parameterType = "City">
+	UPDATE cities SET name=#{name}, numberOfPeople=#{numberOfPeople}, timeZone=#{timeZone}  WHERE id=#{id}
+	</update>
+
+	<delete id = "delete" parameterType = "int">
+	DELETE FROM cities WHERE id=#{id}
+	</delete>
+</mapper>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd"> 
+<configuration>
+	<properties resource = "database.properties"/>
+	
+	<typeAliases>
+		<typeAlias alias="Airport" type="com.fedorova.airPorts.models.airports.Airport"/>
+		<typeAlias alias="Brand" type="com.fedorova.airPorts.models.planes.Brand"/>
+		<typeAlias alias="Boarding" type="com.fedorova.airPorts.models.flights.Boarding"/>
+		<typeAlias alias="BoardingPass" type="com.fedorova.airPorts.models.flights.BoardingPass"/>
+		<typeAlias alias="Cancellation" type="com.fedorova.airPorts.models.flights.Cancellation"/>
+		<typeAlias alias="City" type="com.fedorova.airPorts.models.location.City"/>
+		<typeAlias alias="Country" type="com.fedorova.airPorts.models.location.Country"/>
+		<typeAlias alias="Flight" type="com.fedorova.airPorts.models.flights.Flight"/>
+		<typeAlias alias="Model" type="com.fedorova.airPorts.models.planes.Model"/>
+		<typeAlias alias="Passenger" type="com.fedorova.airPorts.models.people.Passenger"/>
+		<typeAlias alias="Pilot" type="com.fedorova.airPorts.models.people.Pilot"/>
+		<typeAlias alias="Plane" type="com.fedorova.airPorts.models.planes.Plane"/>
+		<typeAlias alias="Steward" type="com.fedorova.airPorts.models.people.Steward"/>
+		
+	</typeAliases>
+	
+	<environments default = "development">
+		<environment id = "development">
+			<transactionManager type = "JDBC"/>
+			<dataSource type = "POOLED">
+				<property name = "driver" value = "${driver}"/>
+				<property name = "url" value = "${url}"/>
+				<property name = "username" value = "${user}"/>
+				<property name = "password" value = "${password}"/>
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<mapper resource = "AirportMapper.xml"/>
+		<mapper resource = "BrandMapper.xml"/>
+		<mapper resource = "BoardingMapper.xml"/>
+		<mapper resource = "BoardingPassMapper.xml"/>
+		<mapper resource = "CancellationMapper.xml"/>
+		<mapper resource = "CityMapper.xml"/>
+		<mapper resource = "CountryMapper.xml"/>
+		<mapper resource = "FlightsMapper.xml"/>
+		<mapper resource = "ModelMapper.xml"/>
+		<mapper resource = "PassengerMapper.xml"/>
+		<mapper resource = "PilotMapper.xml"/>
+		<mapper resource = "PlaneMapper.xml"/>
+		<mapper resource = "StewardMapper.xml"/>
+		
+	</mappers> 
+	
+</configuration>

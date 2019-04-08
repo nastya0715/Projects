@@ -1,0 +1,27 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace = "com.fedorova.airPorts.dao.IModelDAO"> 
+	<insert id = "insert" parameterType = "Model" useGeneratedKeys = "true" keyProperty = "id">
+	INSERT INTO   models (name) VALUES (#{name})
+	</insert>
+	
+	<resultMap type = "Model" id = "ModelResultMap"> 
+		<id property = "id" column = " model_id"/> 
+		<result property = "name" column = "model_name"/> 
+		<association property="brand" resultMap = "com.fedorova.airPorts.dao.IBrandDAO.BrandResultMap"/> 
+	</resultMap> 
+	<select id = "getById" parameterType ="int" resultMap = "ModelResultMap"> 
+	SELECT m.id as model_id,
+	m.name as model_name,
+	b.id as brand_id,
+	b.name as brand_name
+	FROM  models m LEFT OUTER JOIN brands b ON m.brands_id = b.id WHERE m.id = #{id}
+	</select> 
+	
+	<update id = "update" parameterType = "Model">
+	UPDATE  models SET name=#{name}, numberOfPeople=#{numberOfPeople}, timeZone=#{timeZone}  WHERE id=#{id}
+	</update>
+
+	<delete id = "delete" parameterType = "int">
+	DELETE FROM  models WHERE id=#{id}
+	</delete>
+</mapper>

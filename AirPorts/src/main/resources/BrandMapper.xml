@@ -1,0 +1,26 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace = "com.fedorova.airPorts.dao.IBrandDAO"> 
+
+	<insert id = "insert" parameterType = "Brand" useGeneratedKeys = "true" keyProperty = "id">
+	INSERT INTO  brands (id, name) VALUES (#{id}, #{name})
+	</insert>
+	
+	<resultMap type = "Brand" id = "BrandResultMap"> 
+		<id property = "id" column = "brand_id"/> 
+	<result property = "name" column = "brand_name"/> 
+	</resultMap> 
+	
+	<select id = "getById" parameterType ="int" resultMap = "BrandResultMap"> 
+		select b.id as brand_id,
+		b.name as brand_name
+		from brands b WHERE id=#{id} 
+	</select> 
+	
+	<update id = "update" parameterType = "Brand">
+	UPDATE brands SET id = #{id}, name = #{name} WHERE id=#{id}
+	</update>
+
+	<delete id = "delete" parameterType = "int">
+	DELETE FROM brands WHERE id=#{id}
+	</delete>
+</mapper>

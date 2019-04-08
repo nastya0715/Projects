@@ -1,0 +1,87 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace = "com.fedorova.airPorts.dao.IFlightDAO"> 
+
+	<insert id = "insert" parameterType = "Flight" useGeneratedKeys = "true" keyProperty = "id">
+	INSERT INTO  flights (id, distance, boardingTime, departure, arrival) VALUES (#{id}, #{distance}, #{boardingTime}, #{departure},#{arrival})
+	</insert>
+	
+	<resultMap type = "Flight" id = "FlightResultMap"> 
+		<id property = "id" column = "flight_id"/> 
+		<result property = "distance" column = "flight_distance"/>
+		<result property = "boardingTime" column = "flight_boarding_time"/>  
+		<result property = "departure" column = "flight_departure_dateTime"/> 
+		<result property = "arrival" column = "flight_arrival_dateTime"/> 
+		<association property="plane" resultMap = "com.fedorova.airPorts.dao.IPlaneDAO.PlaneResultMap"/> 
+		<association property="cancellation" resultMap = "com.fedorova.airPorts.dao.ICancellationDAO.CancellationResultMap"/>
+		<association property="boarding" resultMap = "com.fedorova.airPorts.dao.IBoardingDAO.BoardingResultMap"/>
+		<association property="from" resultMap = "com.fedorova.airPorts.dao.IAirportDAO.AirportResultMap"/>		
+		<association property="to" resultMap = "com.fedorova.airPorts.dao.IAirportDAO.ToAirportResultMap"/>
+		
+	</resultMap> 
+	
+	<select id = "getById" parameterType ="int" resultMap = "FlightResultMap"> 
+		
+		select 
+		fl.id as flight_id,
+		fl.distance as flight_distance,
+		fl.boarding_time as flight_boarding_time,
+		fl.departure_time as flight_departure_dateTime,
+		fl.arrival_time as flight_arrival_dateTime,
+		pl.id as plane_id,
+		pl.plane_condition as plane_condition,
+		pl.planes_types as plane_types,
+		m.id as model_id,
+		m.name as model_name,
+		b.id as brand_id,
+		b.name as brand_name, 
+		ca.id as cancellation_id,
+		ca.cancellation_time as cancellation_dateTime,
+		ca.reason as cancellation_reason,
+		br.id as boarding_id,
+		br.registration_start as boarding_registration_start,
+		br.terminal as boarding_terminal,
+		f.id as airport_id,
+		f.name as airport_name,
+		f.airport_class as airport_class,
+		fc.id as city_id,
+		fc.name as city_name,
+		fc.number_of_people as city_numberOfPeople,
+		fc.time_zone as city_timeZone,
+		fco.id as country_id,
+		fco.name as country_name,
+		
+		t.id as tairport_id,
+		t.name as tairport_name,
+		t.airport_class as tairport_class,
+		tc.id as tcity_id,
+		tc.name as tcity_name,
+		tc.number_of_people as tcity_numberOfPeople,
+		tc.time_zone as tcity_timeZone,
+		tco.id as tcountry_id,
+		tco.name as tcountry_name		
+		
+		from flights fl LEFT OUTER JOIN planes pl ON fl.plane_id = pl.id 
+		LEFT OUTER JOIN models m ON pl.models_id = m.id 
+		LEFT OUTER JOIN brands b ON m.brands_id = b.id 
+		LEFT OUTER JOIN cancellation ca ON fl.cancellation_id = ca.id
+		LEFT OUTER JOIN boarding br ON fl.boarding_id = br.id
+		LEFT OUTER JOIN airports f ON fl.from_id = f.id
+		LEFT OUTER JOIN cities fc ON f.city_id = fc.id 
+		LEFT OUTER JOIN countries fco ON fc.countries_id = fco.id
+		LEFT OUTER JOIN airports t ON fl.to_id = t.id
+		LEFT OUTER JOIN cities tc ON t.city_id = tc.id 
+		LEFT OUTER JOIN countries tco ON tc.countries_id = tco.id
+		WHERE fl.id = #{id};
+		
+		
+		
+</select> 
+	
+	<update id = "update" parameterType = "Flight">
+	UPDATE flights SET id = #{id}, distance = #{distance}, boardingTime = #{boardingTime}, departure = #{departure}, arrival = #{arrival} WHERE id=#{id}
+	</update>
+
+	<delete id = "delete" parameterType = "int">
+	DELETE FROM flights WHERE id=#{id}
+	</delete>
+</mapper>

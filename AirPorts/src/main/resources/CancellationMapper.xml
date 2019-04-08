@@ -1,0 +1,28 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace = "com.fedorova.airPorts.dao.ICancellationDAO"> 
+
+	<insert id = "insert" parameterType = "Cancellation" useGeneratedKeys = "true" keyProperty = "id">
+	INSERT INTO  cancellation (id, dateTime, reason) VALUES (#{id}, #{dateTime}, #{reason})
+	</insert>
+	
+	<resultMap type = "Cancellation" id = "CancellationResultMap"> 
+		<id property = "id" column = "cancellation_id"/> 
+	<result property = "dateTime" column = "cancellation_dateTime"/> 	
+	<result property = "reason" column = "cancellation_reason"/> 
+	</resultMap> 
+	
+	<select id = "getById" parameterType ="int" resultMap = "CancellationResultMap"> 
+		select ca.id as cancellation_id,
+		ca.cancellation_time as cancellation_dateTime,
+		ca.reason as cancellation_reason
+		from cancellation ca WHERE id=#{id} 
+	</select> 
+	
+	<update id = "update" parameterType = "Cancellation">
+	UPDATE cancellation SET name=#{name} WHERE id=#{id}
+	</update>
+
+	<delete id = "delete" parameterType = "int">
+	DELETE FROM cancellation WHERE id=#{id}
+	</delete>
+</mapper>

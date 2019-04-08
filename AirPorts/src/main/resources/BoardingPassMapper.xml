@@ -1,0 +1,98 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace = "com.fedorova.airPorts.dao.IBoardingPassDAO"> 
+
+	<insert id = "insert" parameterType = "BoardingPass" useGeneratedKeys = "true" keyProperty = "id">
+	INSERT INTO  boarding_passes (id, seat_num, cost, flight_class, age_category, way_of_selling, gate) VALUES (#{id}, #{seat_num}, #{cost}, #{flight_class},#{age_category}, #{way_of_selling},#{gate})
+	</insert>
+	
+	<resultMap type = "BoardingPass" id = "BoardingPassResultMap"> 
+		<id property = "id" column = "boardingPass_id"/> 
+		<result property = "seatNum" column = "boardingPass_seat"/>
+		<result property = "cost" column = "boardingPass_cost"/>  
+		<result property = "flightClass" column = "boardingPass_flight_class"/> 
+		<result property = "ageCategory" column = "boardingPass_age_category"/> 
+		<result property = "wayOfSelling" column = "boardingPass_way_of_selling"/> 
+		<result property = "gate" column = "boardingPass_gate"/> 
+		<association property="flight" resultMap = "com.fedorova.airPorts.dao.IFlightDAO.FlightResultMap"/> 
+		<association property="passenger" resultMap = "com.fedorova.airPorts.dao.IPassengerDAO.PassengerResultMap"/> 
+	</resultMap> 
+	
+	<select id = "getById" parameterType ="int" resultMap = "BoardingPassResultMap"> 
+		
+		select bp.id as boardingPass_id,
+		bp.seat_num as boardingPass_seat,
+		bp.cost as boardingPass_cost,
+		bp.flight_class as boardingPass_flight_class,
+		bp.age_category as boardingPass_age_category,
+		bp.way_of_selling as boardingPass_way_of_selling,
+		bp.gate as boardingPass_gate,
+		fl.id as flight_id,
+		fl.distance as flight_distance,
+		fl.boarding_time as flight_boarding_time,
+		fl.departure_time as flight_departure_dateTime,
+		fl.arrival_time as flight_arrival_dateTime,
+		pl.id as plane_id,
+		pl.plane_condition as plane_condition,
+		pl.planes_types as plane_types,
+		m.id as model_id,
+		m.name as model_name,
+		b.id as brand_id,
+		b.name as brand_name, 
+		ca.id as cancellation_id,
+		ca.cancellation_time as cancellation_dateTime,
+		ca.reason as cancellation_reason,
+		br.id as boarding_id,
+		br.registration_start as boarding_registration_start,
+		br.terminal as boarding_terminal,
+		f.id as airport_id,
+		f.name as airport_name,
+		f.airport_class as airport_class,
+		fc.id as city_id,
+		fc.name as city_name,
+		fc.number_of_people as city_numberOfPeople,
+		fc.time_zone as city_timeZone,
+		fco.id as country_id,
+		fco.name as country_name,
+		
+		t.id as tairport_id,
+		t.name as tairport_name,
+		t.airport_class as tairport_class,
+		tc.id as tcity_id,
+		tc.name as tcity_name,
+		tc.number_of_people as tcity_numberOfPeople,
+		tc.time_zone as tcity_timeZone,
+		tco.id as tcountry_id,
+		tco.name as tcountry_name,
+		
+		pas.id as passenger_id,
+		pas.first_name as passenger_first_name,
+		pas.last_name as passenger_last_name		
+		
+		
+		from tickets bp LEFT OUTER JOIN flights fl ON bp.flights_id = fl.id 
+		LEFT OUTER JOIN planes pl ON fl.plane_id = pl.id 
+		LEFT OUTER JOIN models m ON pl.models_id = m.id 
+		LEFT OUTER JOIN brands b ON m.brands_id = b.id 
+		LEFT OUTER JOIN cancellation ca ON fl.cancellation_id = ca.id
+		LEFT OUTER JOIN boarding br ON fl.boarding_id = br.id
+		LEFT OUTER JOIN airports f ON fl.from_id = f.id
+		LEFT OUTER JOIN cities fc ON f.city_id = fc.id 
+		LEFT OUTER JOIN countries fco ON fc.countries_id = fco.id
+		LEFT OUTER JOIN airports t ON fl.to_id = t.id
+		LEFT OUTER JOIN cities tc ON t.city_id = tc.id 
+		LEFT OUTER JOIN countries tco ON tc.countries_id = tco.id
+		LEFT OUTER JOIN passengers pas ON bp.passengers_id = pas.id 
+		WHERE bp.id = #{id};
+		
+		
+		
+</select> 
+	
+	<update id = "update" parameterType = "BoardingPass">
+	UPDATE boarding_passes SET id=#{id}, seat_num = #{seat_num}, cost = #{cost}, flight_class = #{flight_class}, age_category = #{age_category}, way_of_selling = #{way_of_selling}, gate = #{gate} WHERE id=#{id}
+	</update>
+
+	<delete id = "delete" parameterType = "int">
+	DELETE FROM boarding_passes WHERE id=#{id}
+	</delete>
+</mapper>

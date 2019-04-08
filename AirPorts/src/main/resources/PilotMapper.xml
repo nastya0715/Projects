@@ -1,0 +1,46 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace = "com.fedorova.airPorts.dao.IPilotDAO"> 
+
+	<insert id = "insert" parameterType = "Pilot" useGeneratedKeys = "true" keyProperty = "id">
+	INSERT INTO  countries (name) VALUES (#{name})
+	</insert>
+	
+	<resultMap type = "Pilot" id = "PilotResultMap"> 
+		<id property = "id" column = "pilot_id"/> 
+		<result property = "firstName" column = "pilot_first_name"/>
+		<result property = "lastName" column = "pilot_last_name"/>  
+		<result property = "age" column = "pilot_age"/>
+		<result property = "experience" column = "pilot_experience"/> 	
+		<result property = "flightsNum" column = "pilot_flights_num"/>	
+		<result property = "specialization" column = "pilot_specialization"/>  
+		<association property="plane" resultMap = "com.fedorova.airPorts.dao.IPlaneDAO.PlaneResultMap"/> 	
+	</resultMap> 
+	
+	<select id = "getById" parameterType ="int" resultMap = "PilotResultMap"> 
+		select p.id as pilot_id,
+		p.first_name as pilot_first_name,
+		p.last_name as pilot_last_name,
+		p.age as pilot_age,
+		p.experience as pilot_experience,
+		p.flights_num as pilot_flights_num,
+		p.pilot_specialization as pilot_specialization,
+		pl.id as plane_id,
+		pl.plane_condition as plane_condition,
+		pl.planes_types as plane_types,
+		m.id as  model_id,
+		m.name as  model_name,
+		b.id as brand_id,
+		b.name as brand_name
+		from pilots p LEFT OUTER JOIN planes pl ON p.planes_id = pl.id 
+		LEFT OUTER JOIN models m ON pl.models_id = m.id 
+		LEFT OUTER JOIN brands b ON m.brands_id = b.id WHERE p.id = #{id}  
+	</select> 
+	
+	<update id = "update" parameterType = "Pilot">
+	UPDATE countries SET name=#{name} WHERE id=#{id}
+	</update>
+
+	<delete id = "delete" parameterType = "int">
+	DELETE FROM countries WHERE id=#{id}
+	</delete>
+</mapper>

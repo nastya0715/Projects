@@ -1,0 +1,28 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace = "com.fedorova.airPorts.dao.IBoardingDAO"> 
+
+	<insert id = "insert" parameterType = "Boarding" useGeneratedKeys = "true" keyProperty = "id">
+	INSERT INTO  boarding (id, registrationTime, terminal) VALUES (#{id}, #{registrationTime}, #{terminal})
+	</insert>
+	
+	<resultMap type = "Boarding" id = "BoardingResultMap"> 
+		<id property = "id" column = "boarding_id"/> 
+	<result property = "registrationTime" column = "boarding_registration_start"/> 	
+	<result property = "terminal" column = "boarding_terminal"/> 
+	</resultMap> 
+	
+	<select id = "getById" parameterType ="int" resultMap = "BoardingResultMap"> 
+		select br.id as boarding_id,
+		br.registration_start as boarding_registration_start,
+		br.terminal as boarding_terminal
+		from boarding br WHERE id=#{id} 
+	</select> 
+	
+	<update id = "update" parameterType = "Boarding">
+	UPDATE boarding SET name=#{name} WHERE id=#{id}
+	</update>
+
+	<delete id = "delete" parameterType = "int">
+	DELETE FROM boarding WHERE id=#{id}
+	</delete>
+</mapper>
